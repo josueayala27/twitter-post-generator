@@ -20,6 +20,7 @@
 <script>
 import TwitterPost from '@/components/TwitterPost'
 import Input from '@/components/Input'
+import dayjs from 'dayjs'
 
 export default {
   name: 'Index',
@@ -33,9 +34,25 @@ export default {
         name: '',
         username: '',
         tweet: '',
-        time: '',
+        date: '',
       },
     }
+  },
+  mounted() {
+    this.getDate()
+  },
+  methods: {
+    /**
+     * Get the current date and time using the required librarian dayjs 😋
+     */
+    getDate() {
+      /**
+       * The current time is obtained with an AM/PM format, example: 11:30 pm 🎈
+       * Current date assignment, with a format similar to: Jan 1, 2021 📅
+       * For more information on format visit the documentation of dayjs: https://day.js.org/docs/en/display/format#docsNav
+       */
+      this.data.date = dayjs().format('h:m A · MMM DD, YYYY')
+    },
   },
 }
 </script>

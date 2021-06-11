@@ -13,7 +13,7 @@
     <div class="body mt-2">
       <h1 class="text-xl">{{ data.tweet }}</h1>
       <div class="time mt-3">
-        <p class="text-gray-500 font-normal">12:00 PM · Jan 1, 2021</p>
+        <p class="text-gray-500 font-normal">{{ data.date }}</p>
       </div>
     </div>
     <div class="footer border-t mt-3 pt-3 flex justify-around">

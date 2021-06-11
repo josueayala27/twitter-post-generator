@@ -17,7 +17,7 @@
         duration-300
         focus:border-blue-400
       "
-      type="text"
+      :type="type"
       @input="$emit('input', $event.target.value)"
     />
   </div>
@@ -30,6 +30,7 @@ export default {
     block: { type: Boolean, default: false },
     label: { type: String, default: null },
     value: { type: String, default: null },
+    type: { type: String, default: null },
   },
 }
 </script>
