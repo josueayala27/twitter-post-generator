@@ -13,6 +13,7 @@
     </div>
     <div class="h-screen w-full flex items-center justify-center">
       <TwitterPost :data="data" title="Twitter component" />
+      <button @click="downloadFile()">Download</button>
     </div>
   </div>
 </template>
@@ -21,6 +22,8 @@
 import TwitterPost from '@/components/TwitterPost'
 import Input from '@/components/Input'
 import dayjs from 'dayjs'
+import html2canvas from 'html2canvas'
+import { base64Downloader } from '@/utils/index'
 
 export default {
   name: 'Index',
@@ -36,6 +39,7 @@ export default {
         tweet: '',
         date: '',
       },
+      img: '',
     }
   },
   mounted() {
@@ -52,6 +56,16 @@ export default {
        * For more information on format visit the documentation of dayjs: https://day.js.org/docs/en/display/format#docsNav
        */
       this.data.date = dayjs().format('h:m A · MMM DD, YYYY')
+      setInterval(() => {
+        this.data.date = dayjs().format('h:m A · MMM DD, YYYY')
+      }, 60 * 1000)
+    },
+
+    async downloadFile() {
+      const image = await html2canvas(
+        document.querySelector('#tweet-container')
+      )
+      base64Downloader(image.toDataURL(), 'Test filename')
     },
   },
 }

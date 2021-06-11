@@ -1,5 +1,5 @@
 <template>
-  <section class="tweet-container border py-3 px-4">
+  <section id="tweet-container" class="tweet-container border py-3 px-4">
     <div class="header flex justify-between">
       <div class="flex items-center">
         <Avatar />
