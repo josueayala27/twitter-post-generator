@@ -1,68 +1,41 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">post-generator-twitter</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div class="grid grid-cols-2">
+    <div class="h-screen overflow-auto p-10 flex items-center">
+      <section class="w-full space-y-4">
+        <Input v-model.trim="data.name" label="Name" block />
+        <Input
+          v-model.trim="data.username"
+          label="Username (Twitter handle)"
+          block
+        />
+        <Input v-model.trim="data.tweet" label="Tweet content" block />
+      </section>
+    </div>
+    <div class="h-screen w-full flex items-center justify-center">
+      <TwitterPost :data="data" title="Twitter component" />
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import TwitterPost from '@/components/TwitterPost'
+import Input from '@/components/Input'
+
+export default {
+  name: 'Index',
+  components: {
+    TwitterPost,
+    Input,
+  },
+  data() {
+    return {
+      data: {
+        name: '',
+        username: '',
+        tweet: '',
+        time: '',
+      },
+    }
+  },
+}
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>

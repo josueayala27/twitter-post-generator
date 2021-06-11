@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    font-family: 'Inter', sans-serif;
+}
+
+
+/* Scrollbar styles */
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-gray-50 border-none;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-200 border-none;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-300 border-none;
+}
+
+::-webkit-scrollbar-thumb:active {
+    @apply bg-gray-300 border-none;
+}

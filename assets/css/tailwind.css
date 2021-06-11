@@ -1,0 +1,7 @@
+/**
+ * Adding the tailwind imports 😎
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
