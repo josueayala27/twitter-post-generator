@@ -11,7 +11,9 @@
       <div>-</div>
     </div>
     <div class="body mt-2">
-      <h1 class="text-xl">Haz el amor y no la guerra (John Lennon)</h1>
+      <h1 class="text-xl">
+        Construimos demasiados muros y no suficientes puentes (Isaac Newton)
+      </h1>
       <div class="time mt-3">
         <p class="text-gray-500 font-normal">{{ data.date }}</p>
       </div>

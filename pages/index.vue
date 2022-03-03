@@ -1,17 +1,7 @@
 <template>
   <div class="h-screen flex items-center justify-center">
     <div
-      class="
-        w-[520px]
-        h-[386px]
-        flex
-        items-center
-        justify-center
-        bg-gradient-to-b
-        from-[#A68FFB]
-        to-[#E6BDF7]
-        p-[64px]
-      "
+      class="w-[520px] h-[386px] flex items-center justify-center bg-gradient-to-b from-[#A68FFB] to-[#E6BDF7] p-[64px]"
     >
       <TwitterPost :data="data" title="Twitter component" />
     </div>
@@ -22,7 +12,7 @@
 import dayjs from 'dayjs'
 
 export default {
-  name: 'Index',
+  name: 'IndexPage',
   data() {
     return {
       data: {
