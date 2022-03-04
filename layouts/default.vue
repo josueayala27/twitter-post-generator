@@ -5,8 +5,13 @@
       <Dropdown>
         <button>Hola como estas</button>
         <template #items>
-          <ItemDropdown v-for="{ id, name } in colors" :key="id" class="text-sm"
-            ><div class="w-[16px] aspect-square bg-red-500 rounded-full"></div>
+          <ItemDropdown
+            v-for="{ id, name, gradient: { to, from } } in colors"
+            :key="id"
+            class="text-sm"
+            ><div
+              :style="`background-image: linear-gradient(180deg, ${from} , ${to});`"
+              class="w-[16px] aspect-square rounded-full"></div>
             {{ name }}</ItemDropdown
           >
         </template>
