@@ -1,6 +1,6 @@
 <template>
   <section
-    class="p-5 bg-white rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
+    class="p-5 bg-white shadow-xl rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
     <div class="header flex justify-between">
       <div class="flex items-center">
         <Avatar />
@@ -16,8 +16,8 @@
       </div>
       <div><Icon class="text-[#49b6f5]" name="twitter" /></div>
     </div>
-    <div class="body">
-      <h1 class="text-xl">Vue.js > Laravel 👌</h1>
+    <div class="gap-y-4 flex flex-col">
+      <h1 class="text-xl">Cada día sabemos más y entendemos menos 🤔</h1>
       <div class="flex text-sm gap-x-2">
         <p class="text-gray-500 font-normal">
           {{ data.date }} ·
