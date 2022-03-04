@@ -24,11 +24,7 @@ export default {
   plugins: ['@/plugins/v-tooltip.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
-  components: [
-    { path: '@/components/ui', extensions: ['vue'] },
-    { path: '@/components/ui/dropdown', extensions: ['vue'] },
-    { path: '@/components', extensions: ['vue'] },
-  ],
+  components: [{ path: '@/components/**/*', extensions: ['vue'] }],
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
@@ -66,4 +62,4 @@ export default {
       },
     },
   },
-}
+};

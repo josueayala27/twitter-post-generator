@@ -5,7 +5,10 @@
       <Dropdown>
         <button>Hola como estas</button>
         <template #items>
-          <ItemDropdown>Item #1</ItemDropdown>
+          <ItemDropdown v-for="{ id, name } in colors" :key="id" class="text-sm"
+            ><div class="w-[16px] aspect-square bg-red-500 rounded-full"></div>
+            {{ name }}</ItemDropdown
+          >
         </template>
       </Dropdown>
     </div>
@@ -19,7 +22,7 @@ import { mapState } from 'vuex';
 export default {
   name: 'DefaultLayout',
   computed: {
-    ...mapState('theme', ['test']),
+    ...mapState('theme', ['colors']),
   },
 };
 </script>
