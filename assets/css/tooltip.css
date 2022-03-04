@@ -81,7 +81,7 @@
 }
 
 .tooltip.popover .popover-inner {
-  @apply text-black bg-white p-3 rounded-lg border-[1px];
+  @apply text-black bg-white p-3 rounded-lg;
 }
 
 .tooltip.popover .popover-arrow {

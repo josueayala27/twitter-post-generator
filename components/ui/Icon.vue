@@ -5,8 +5,7 @@
     <div
       class="w-[1.2rem] aspect-square fill-current"
       @click="$emit('click')"
-      v-html="icon"
-    ></div>
+      v-html="icon"></div>
   </client-only>
 </template>
 
@@ -18,8 +17,8 @@ export default {
   },
   computed: {
     icon() {
-      return require(`@/assets/icons/${this.name}.svg?raw`)
+      return require(`@/assets/icons/${this.name}.svg?raw`);
     },
   },
-}
+};
 </script>

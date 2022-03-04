@@ -1,7 +1,6 @@
 <template>
   <section
-    class="p-5 bg-white rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col"
-  >
+    class="p-5 bg-white rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
     <div class="header flex justify-between">
       <div class="flex items-center">
         <Avatar />
@@ -10,8 +9,7 @@
             Josué Ayala
             <Icon
               class="cursor-pointer invisible group-hover:visible"
-              name="pencil"
-            />
+              name="pencil" />
           </p>
           <p class="text-gray-500 font-normal">@joscode</p>
         </div>
@@ -34,7 +32,7 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import dayjs from 'dayjs';
 
 export default {
   name: 'TwitterPost',
@@ -43,10 +41,10 @@ export default {
       data: {
         date: null,
       },
-    }
+    };
   },
   mounted() {
-    this.getDate()
+    this.getDate();
   },
   methods: {
     /**
@@ -58,8 +56,8 @@ export default {
        * Current date assignment, with a format similar to: Jan 1, 2021 📅
        * For more information on format visit the documentation of dayjs: https://day.js.org/docs/en/display/format#docsNav
        */
-      this.data.date = dayjs().format('hh:mm A · MMM DD, YYYY')
+      this.data.date = dayjs().format('hh:mm A · MMM DD, YYYY');
     },
   },
-}
+};
 </script>
