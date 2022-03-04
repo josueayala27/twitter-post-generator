@@ -1,17 +1,23 @@
 module.exports = {
-  purge: [
-    './components/**/*.{vue,js}',
+  content: [
+    './components/**/*.{js,vue,ts}',
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
     './nuxt.config.{js,ts}',
   ],
-  darkMode: 'class', // or 'media' or 'class'
   theme: {
-    extend: {},
-  },
-  variants: {
+    fontFamily: {
+      sans: [
+        'Inter',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        'Apple Color Emoji',
+        'Helvetica Neue',
+        'sans-serif',
+      ],
+    },
     extend: {},
   },
   plugins: [],
-}
+};
