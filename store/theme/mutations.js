@@ -1,5 +1,5 @@
 export default {
-  setState(parameter) {
-    console.log(parameter);
+  setGradient(state, index) {
+    state.selectedGradient = index;
   },
 };

@@ -17,7 +17,7 @@
       <div><Icon class="text-[#49b6f5]" name="twitter" /></div>
     </div>
     <div class="body">
-      <h1 class="text-xl">Viva vue.js 👌</h1>
+      <h1 class="text-xl">Vue.js > Laravel 👌</h1>
       <div class="flex text-sm gap-x-2">
         <p class="text-gray-500 font-normal">
           {{ data.date }} ·
