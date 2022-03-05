@@ -17,16 +17,18 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
+  serverMiddleware: [{ path: '/api', handler: '@/api/index.js' }],
+
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ['@/assets/css/main.css', '@/assets/css/tooltip.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/v-tooltip.client.js'],
+  plugins: ['@/plugins/v-tooltip.client.js', '@/plugins/dom-to-svg.client.js'],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [
     { path: '@/components/ui', extensions: ['vue'] },
-    { path: '@/components/ui/dropdown', extensions: ['vue'] },
+    { path: '@/components/ui/select', extensions: ['vue'] },
     { path: '@/components', extensions: ['vue'] },
   ],
 
@@ -52,7 +54,7 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [],
+  modules: ['@nuxtjs/axios'],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
