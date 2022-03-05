@@ -1,14 +1,25 @@
 <template>
-  <div class="h-12 w-12 bg-gray-200 rounded-full relative overflow-hidden">
+  <div
+    class="h-12 aspect-square bg-gray-200 rounded-full relative overflow-hidden z-0 group">
+    <div
+      class="w-full z-[1] cursor-pointer absolute h-full group-hover:bg-black/50 group-hover:opacity-100 opacity-0 text-white flex items-center justify-center inset-0"
+      @click="$emit('edit')">
+      <Icon name="pencil" />
+    </div>
     <img
+      style="clip-path: circle(50% at 50% 50%)"
       class="w-full h-full object-cover"
-      src="https://pbs.twimg.com/profile_images/1496156503446798343/_AlyPCcd_400x400.jpg"
-      alt="" />
+      :src="src"
+      alt="Twitter Photo" />
   </div>
 </template>
 
 <script>
 export default {
   name: 'AvatarComponent',
+  props: {
+    editable: { type: Boolean, default: false },
+    src: { type: String, default: '' },
+  },
 };
 </script>
