@@ -59,9 +59,10 @@ export default {
   },
   methods: {
     ...mapMutations('theme', ['setGradient', 'setTheme']),
-    render(element) {
+    async render(element) {
       const el = document.getElementById(element);
       const svg = this.$domToSvg.elementToSVG(el);
+      await this.$domToSvg.inlineResources(svg.documentElement);
       console.log(new XMLSerializer().serializeToString(svg));
       const image = new Image();
       image.onload = () => {
@@ -79,6 +80,7 @@ export default {
         );
 
         const url = canvas.toDataURL('image/png');
+        console.log(url);
         const a = document.createElement('a');
         a.href = url;
         a.download = 'Twitter Image.png';

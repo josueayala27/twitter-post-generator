@@ -18,13 +18,14 @@
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white cursor-pointer transition-all duration-300">
             Name
           </p>
-          <p class="text-gray-500 font-normal dark:text-[#8B8D91]">
-            @<span
+          <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
+            @
+            <div
               v-tooltip="{ content: 'Edit username' }"
-              class="outline-none inline-flex cursor-pointer transition-all duration-300"
-              >username</span
-            >
-          </p>
+              class="outline-none inline-flex cursor-pointer transition-all duration-300">
+              username
+            </div>
+          </div>
         </div>
       </div>
       <div>
@@ -98,17 +99,23 @@ export default {
     },
     uploadPhoto(evt) {
       const file = evt.target.files[0];
+      /* const formData = new FormData();
+      formData.append('file', file);
+      formData.append('upload_preset', 'b3u3ddwn');
+      const { url } = await this.$axios.$post(
+        'https://api.cloudinary.com/v1_1/diobzajfw/image/upload',
+        formData
+      );
+      const uri = url.split('/').map((el) => {
+        if (el === 'upload') {
+          return 'upload/w_150,h_150,c_fill,g_face,r_max';
+        }
+        return el;
+      }); */
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      const formData = new FormData();
-      formData.append('file', file);
-      reader.onload = async () => {
-        await this.$axios.$post('/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        this.post.user.image = reader.result;
+      reader.onload = (e) => {
+        this.post.user.image = e.target.result;
       };
     },
   },
