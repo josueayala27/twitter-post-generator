@@ -63,13 +63,11 @@ export default {
       const el = document.getElementById(element);
       const svg = this.$domToSvg.elementToSVG(el);
       await this.$domToSvg.inlineResources(svg.documentElement);
-      console.log(new XMLSerializer().serializeToString(svg));
       const image = new Image();
       image.onload = () => {
         const canvas = document.createElement('canvas');
         canvas.width = el.offsetWidth * 3.5;
         canvas.height = el.offsetHeight * 3.5;
-
         const context = canvas.getContext('2d');
         context.drawImage(
           image,
@@ -78,9 +76,7 @@ export default {
           el.offsetWidth * 3.5,
           el.offsetHeight * 3.5
         );
-
         const url = canvas.toDataURL('image/png');
-        console.log(url);
         const a = document.createElement('a');
         a.href = url;
         a.download = 'Twitter Image.png';

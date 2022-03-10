@@ -16,14 +16,14 @@
           <p
             v-tooltip="{ content: 'Edit name' }"
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white cursor-pointer transition-all duration-300">
-            Name
+            Josué Ayala
           </p>
           <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
             @
             <div
               v-tooltip="{ content: 'Edit username' }"
               class="outline-none inline-flex cursor-pointer transition-all duration-300">
-              username
+              joscode
             </div>
           </div>
         </div>
@@ -37,7 +37,8 @@
         <h1
           v-tooltip="{ content: 'Edit tweet' }"
           class="text-xl dark:text-white focus:border transition-all duration-300 cursor-pointer inline-flex">
-          Your tweet here!
+          Papá, bebí 1 litro de gasolina, ¿qué puedo hacer? Pues si vas
+          despacio, 20 km
         </h1>
       </div>
       <div class="flex text-sm gap-x-2">
@@ -49,6 +50,7 @@
         </p>
       </div>
     </div>
+    <canvas id="content" class="hidden" width="144" height="144"></canvas>
     <div
       class="border-t flex pt-[1rem] dark:border-[#3a3a3a] transition-all duration-300">
       <div
@@ -63,6 +65,7 @@
 
 <script>
 import dayjs from 'dayjs';
+import { cropper } from '@/utils/image';
 
 export default {
   name: 'TwitterPost',
@@ -99,23 +102,14 @@ export default {
     },
     uploadPhoto(evt) {
       const file = evt.target.files[0];
-      /* const formData = new FormData();
-      formData.append('file', file);
-      formData.append('upload_preset', 'b3u3ddwn');
-      const { url } = await this.$axios.$post(
-        'https://api.cloudinary.com/v1_1/diobzajfw/image/upload',
-        formData
-      );
-      const uri = url.split('/').map((el) => {
-        if (el === 'upload') {
-          return 'upload/w_150,h_150,c_fill,g_face,r_max';
-        }
-        return el;
-      }); */
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      reader.onload = (e) => {
-        this.post.user.image = e.target.result;
+      reader.onload = async ({ target }) => {
+        const src = await cropper(
+          document.getElementById('content'),
+          target.result
+        );
+        this.post.user.image = src;
       };
     },
   },
