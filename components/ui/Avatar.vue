@@ -6,11 +6,7 @@
       @click="$emit('edit')">
       <Icon name="pencil" />
     </div>
-    <img
-      style="clip-path: circle(50% at 50% 50%)"
-      class="w-full h-full object-cover"
-      :src="src"
-      alt="Twitter Photo" />
+    <img class="w-full h-full object-cover" :src="src" alt="Twitter Photo" />
   </div>
 </template>
 

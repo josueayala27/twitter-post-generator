@@ -59,16 +59,15 @@ export default {
   },
   methods: {
     ...mapMutations('theme', ['setGradient', 'setTheme']),
-    render(element) {
+    async render(element) {
       const el = document.getElementById(element);
       const svg = this.$domToSvg.elementToSVG(el);
-      console.log(new XMLSerializer().serializeToString(svg));
+      await this.$domToSvg.inlineResources(svg.documentElement);
       const image = new Image();
       image.onload = () => {
         const canvas = document.createElement('canvas');
         canvas.width = el.offsetWidth * 3.5;
         canvas.height = el.offsetHeight * 3.5;
-
         const context = canvas.getContext('2d');
         context.drawImage(
           image,
@@ -77,7 +76,6 @@ export default {
           el.offsetWidth * 3.5,
           el.offsetHeight * 3.5
         );
-
         const url = canvas.toDataURL('image/png');
         const a = document.createElement('a');
         a.href = url;

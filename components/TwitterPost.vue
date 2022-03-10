@@ -16,15 +16,16 @@
           <p
             v-tooltip="{ content: 'Edit name' }"
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white cursor-pointer transition-all duration-300">
-            Name
+            Josué Ayala
           </p>
-          <p class="text-gray-500 font-normal dark:text-[#8B8D91]">
-            @<span
+          <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
+            @
+            <div
               v-tooltip="{ content: 'Edit username' }"
-              class="outline-none inline-flex cursor-pointer transition-all duration-300"
-              >username</span
-            >
-          </p>
+              class="outline-none inline-flex cursor-pointer transition-all duration-300">
+              joscode
+            </div>
+          </div>
         </div>
       </div>
       <div>
@@ -36,7 +37,8 @@
         <h1
           v-tooltip="{ content: 'Edit tweet' }"
           class="text-xl dark:text-white focus:border transition-all duration-300 cursor-pointer inline-flex">
-          Your tweet here!
+          Papá, bebí 1 litro de gasolina, ¿qué puedo hacer? Pues si vas
+          despacio, 20 km
         </h1>
       </div>
       <div class="flex text-sm gap-x-2">
@@ -48,6 +50,7 @@
         </p>
       </div>
     </div>
+    <canvas id="content" class="hidden" width="144" height="144"></canvas>
     <div
       class="border-t flex pt-[1rem] dark:border-[#3a3a3a] transition-all duration-300">
       <div
@@ -62,6 +65,7 @@
 
 <script>
 import dayjs from 'dayjs';
+import { cropper } from '@/utils/image';
 
 export default {
   name: 'TwitterPost',
@@ -100,15 +104,12 @@ export default {
       const file = evt.target.files[0];
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      const formData = new FormData();
-      formData.append('file', file);
-      reader.onload = async () => {
-        await this.$axios.$post('/api/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-          },
-        });
-        this.post.user.image = reader.result;
+      reader.onload = async ({ target }) => {
+        const src = await cropper(
+          document.getElementById('content'),
+          target.result
+        );
+        this.post.user.image = src;
       };
     },
   },
