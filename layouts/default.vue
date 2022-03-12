@@ -1,42 +1,9 @@
 <template>
-  <div class="bg-[#131313] flex flex-col h-screen overflow-auto">
-    <header class="py-[100px]"></header>
-    <nav
-      class="fixed z-50 top-[100px] gap-x-3 flex mx-auto shadow-xl bg-white p-6 left-[50%] text-white translate-x-[-50%] rounded-lg">
-      <Dropdown>
-        <Button color="gray"
-          ><div
-            :style="`background-image: linear-gradient(180deg, ${background.from} , ${background.to});`"
-            class="w-[16px] aspect-square rounded-full"></div>
-          Gradients</Button
-        >
-        <template #items>
-          <ItemDropdown
-            v-for="({ id, name, gradient: { to, from } }, i) in gradients"
-            :key="id"
-            @click="setGradient(i)">
-            <div
-              :style="`background-image: linear-gradient(180deg, ${from} , ${to});`"
-              class="w-[16px] aspect-square rounded-full"></div>
-            {{ name }}
-          </ItemDropdown>
-        </template>
-      </Dropdown>
-      <Button color="gray" @click="setTheme(theme)">
-        <div class="w-[16px] aspect-square rounded-full">
-          {{ theme === 'light' ? '🌚' : '☀️' }}
-        </div>
-        {{ theme === 'light' ? 'Dark' : 'Light' }} mode</Button
-      >
-      <Button color="gray" @click="setPreview()">Preview image</Button>
-      <Button color="red" @click="render('twitter-post')"
-        >Export <Icon name="download"
-      /></Button>
-    </nav>
+  <div class="bg-[#111315] flex">
+    <aside class="w-[25rem] bg-[#202427] h-screen"></aside>
     <main class="flex-1">
       <Nuxt />
     </main>
-    <footer class="py-7"></footer>
   </div>
 </template>
 

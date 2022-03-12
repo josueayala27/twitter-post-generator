@@ -8,10 +8,7 @@
           class="hidden"
           type="file"
           @change="uploadPhoto" />
-        <div
-          :class="
-            editMode ? 'p-2 rounded-full border-dashed border-[.24rem]' : ''
-          ">
+        <div>
           <Avatar
             :editable="true"
             :src="post.user.image"
@@ -20,13 +17,11 @@
         <div class="ml-4 leading-5">
           <p
             v-tooltip="{ content: 'Edit name' }"
-            :class="editMode ? 'border-dashed border-[3px] p-2' : ''"
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white cursor-pointer transition-all duration-300">
             {{ post.user.full_name }}
           </p>
           <div
             v-tooltip="{ content: 'Edit username' }"
-            :class="editMode ? 'border-dashed border-[3px] p-2 mt-1' : ''"
             class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
             @
             <div
@@ -43,7 +38,6 @@
     <div class="gap-y-4 flex flex-col">
       <div
         v-tooltip="{ content: 'Edit tweet' }"
-        :class="editMode ? 'border-dashed border-[3px] p-2' : ''"
         class="text-xl dark:text-white focus:border transition-all duration-300 cursor-pointer inline-flex">
         {{ post.tweet }}
       </div>
@@ -61,7 +55,6 @@
       class="border-t flex pt-[1rem] dark:border-[#3a3a3a] transition-all duration-300">
       <div
         v-tooltip="{ content: 'Edit likes' }"
-        :class="editMode ? 'border-dashed border-[3px] p-2' : ''"
         class="flex dark:text-[#8B8D91] gap-2 items-center cursor-pointer">
         <Icon name="heart" />
         <span>11</span>

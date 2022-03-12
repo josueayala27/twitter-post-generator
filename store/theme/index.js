@@ -1,5 +1,4 @@
 export const state = () => ({
-  editMode: true,
   theme: 'light' /* light or dark ☀️/🌚 */,
 
   selectedGradient: 1 /* According to *colors* position */,
