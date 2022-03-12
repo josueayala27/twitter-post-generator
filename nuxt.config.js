@@ -48,7 +48,15 @@ export default {
         },
       },
     ],
+    // https://www.npmjs.com/package/@nuxtjs/svg
     '@nuxtjs/svg',
+    // https://google-analytics.nuxtjs.org/setup
+    [
+      '@nuxtjs/google-analytics',
+      {
+        config: { id: process.env.GOOGLE_ANALYTICS_ID },
+      },
+    ],
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
