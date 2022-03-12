@@ -8,22 +8,25 @@
           class="hidden"
           type="file"
           @change="uploadPhoto" />
-        <Avatar
-          :editable="true"
-          :src="post.user.image"
-          @edit="$refs['input-photo'].click()" />
+        <div>
+          <Avatar
+            :editable="true"
+            :src="post.user.image"
+            @edit="$refs['input-photo'].click()" />
+        </div>
         <div class="ml-4 leading-5">
           <p
             v-tooltip="{ content: 'Edit name' }"
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white cursor-pointer transition-all duration-300">
-            Josué Ayala
+            {{ post.user.full_name }}
           </p>
-          <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
+          <div
+            v-tooltip="{ content: 'Edit username' }"
+            class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
             @
             <div
-              v-tooltip="{ content: 'Edit username' }"
               class="outline-none inline-flex cursor-pointer transition-all duration-300">
-              joscode
+              {{ post.user.username }}
             </div>
           </div>
         </div>
@@ -33,13 +36,10 @@
       </div>
     </div>
     <div class="gap-y-4 flex flex-col">
-      <div>
-        <h1
-          v-tooltip="{ content: 'Edit tweet' }"
-          class="text-xl dark:text-white focus:border transition-all duration-300 cursor-pointer inline-flex">
-          Papá, bebí 1 litro de gasolina, ¿qué puedo hacer? Pues si vas
-          despacio, 20 km
-        </h1>
+      <div
+        v-tooltip="{ content: 'Edit tweet' }"
+        class="text-xl dark:text-white focus:border transition-all duration-300 cursor-pointer inline-flex">
+        {{ post.tweet }}
       </div>
       <div class="flex text-sm gap-x-2">
         <p class="text-gray-500 font-normal dark:text-[#8B8D91]">
@@ -65,6 +65,7 @@
 
 <script>
 import dayjs from 'dayjs';
+import { mapState } from 'vuex';
 import { cropper } from '@/utils/image';
 
 export default {
@@ -73,17 +74,20 @@ export default {
     return {
       post: {
         user: {
-          full_name: 'Josué Ayala',
-          username: 'joscode',
+          full_name: 'Name',
+          username: 'username',
           image:
             'https://images.unsplash.com/photo-1646417783534-a769e3e30baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
         },
         date: '',
-        text: '',
+        tweet: 'Your tweet here!',
         twitter: 'Twitter Web App',
         likes: 11,
       },
     };
+  },
+  computed: {
+    ...mapState('theme', ['editMode']),
   },
   mounted() {
     this.getDate();
@@ -107,7 +111,8 @@ export default {
       reader.onload = async ({ target }) => {
         const src = await cropper(
           document.getElementById('content'),
-          target.result
+          target.result,
+          144
         );
         this.post.user.image = src;
       };
