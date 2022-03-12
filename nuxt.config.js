@@ -51,13 +51,13 @@ export default {
     // https://www.npmjs.com/package/@nuxtjs/svg
     '@nuxtjs/svg',
     // https://google-analytics.nuxtjs.org/setup
-    [
-      '@nuxtjs/google-analytics',
-      {
-        config: { id: process.env.GOOGLE_ANALYTICS_ID },
-      },
-    ],
+    '@nuxtjs/google-analytics',
   ],
+
+  googleAnalytics: {
+    id: process.env.GOOGLE_ANALYTICS_ID,
+    checkDuplicatedScript: true,
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: ['@nuxtjs/axios'],
