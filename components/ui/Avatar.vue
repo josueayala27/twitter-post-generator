@@ -14,7 +14,6 @@
 export default {
   name: 'AvatarComponent',
   props: {
-    editable: { type: Boolean, default: false },
     src: { type: String, default: '' },
   },
 };

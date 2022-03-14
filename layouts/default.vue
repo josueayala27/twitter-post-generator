@@ -1,6 +1,11 @@
 <template>
   <div class="bg-[#111315] flex">
-    <aside class="w-[25rem] bg-[#202427] h-screen"></aside>
+    <aside class="w-[25rem] bg-[#202427] h-screen p-4">
+      <input
+        type="text"
+        placeholder="Full Name"
+        class="w-full bg-[#111315] outline-none px-4 py-2 transition-all duration-300 ring-transparent text-white rounded-2xl ring-2 focus:ring-blue-500" />
+    </aside>
     <main class="flex-1">
       <Nuxt />
     </main>

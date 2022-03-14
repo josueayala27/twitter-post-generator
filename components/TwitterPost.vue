@@ -1,6 +1,6 @@
 <template>
   <section
-    class="p-5 max-w-[450px] bg-white shadow-xl dark:bg-[#000000] rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
+    class="p-5 select-none max-w-[450px] bg-white shadow-xl dark:bg-[#000000] rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
     <div class="header flex justify-between">
       <div class="flex items-center">
         <input
@@ -9,23 +9,16 @@
           type="file"
           @change="uploadPhoto" />
         <div>
-          <Avatar
-            :editable="true"
-            :src="post.user.image"
-            @edit="$refs['input-photo'].click()" />
+          <Avatar :src="post.user.image" @edit="$refs['input-photo'].click()" />
         </div>
         <div class="ml-4 leading-5">
           <p
-            v-tooltip="{ content: 'Edit name' }"
-            class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white cursor-pointer transition-all duration-300">
+            class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white transition-all duration-300">
             {{ post.user.full_name }}
           </p>
-          <div
-            v-tooltip="{ content: 'Edit username' }"
-            class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
+          <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
             @
-            <div
-              class="outline-none inline-flex cursor-pointer transition-all duration-300">
+            <div class="outline-none inline-flex transition-all duration-300">
               {{ post.user.username }}
             </div>
           </div>
@@ -37,8 +30,7 @@
     </div>
     <div class="gap-y-4 flex flex-col">
       <div
-        v-tooltip="{ content: 'Edit tweet' }"
-        class="text-xl dark:text-white focus:border transition-all duration-300 cursor-pointer inline-flex">
+        class="text-xl dark:text-white focus:border transition-all duration-300 inline-flex">
         {{ post.tweet }}
       </div>
       <div class="flex text-sm gap-x-2">
@@ -53,9 +45,7 @@
     <canvas id="content" class="hidden" width="144" height="144"></canvas>
     <div
       class="border-t flex pt-[1rem] dark:border-[#3a3a3a] transition-all duration-300">
-      <div
-        v-tooltip="{ content: 'Edit likes' }"
-        class="flex dark:text-[#8B8D91] gap-2 items-center cursor-pointer">
+      <div class="flex dark:text-[#8B8D91] gap-2 items-center">
         <Icon name="heart" />
         <span>11</span>
       </div>
