@@ -2,7 +2,8 @@
   <div class="flex">
     <aside class="w-[25rem] h-screen p-4 border-r gap-y-2 flex flex-col">
       <Input label="Name" />
-      <Input label="Other Input" />
+      <Input v-model="username" label="Username" />
+      <TextArea label="Tweet" />
       <div class="flex justify-end">
         <Button>Download</Button>
       </div>
@@ -19,6 +20,11 @@ import { toSvg } from '@/utils/downloader';
 
 export default {
   name: 'DefaultLayout',
+  data() {
+    return {
+      username: 'joscode',
+    };
+  },
   computed: {
     ...mapState('theme', ['gradients', 'selectedGradient', 'theme']),
     ...mapGetters('theme', ['background']),

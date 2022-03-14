@@ -9,17 +9,17 @@
           type="file"
           @change="uploadPhoto" />
         <div>
-          <Avatar :src="post.user.image" @edit="$refs['input-photo'].click()" />
+          <Avatar :src="image" @edit="$refs['input-photo'].click()" />
         </div>
         <div class="ml-4 leading-5">
           <p
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white transition-all duration-300">
-            {{ post.user.full_name }}
+            {{ full_name }}
           </p>
           <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
             @
             <div class="outline-none inline-flex transition-all duration-300">
-              {{ post.user.username }}
+              {{ username }}
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
     <div class="gap-y-4 flex flex-col">
       <div
         class="text-xl dark:text-white focus:border transition-all duration-300 inline-flex">
-        {{ post.tweet }}
+        {{ tweet }}
       </div>
       <div class="flex text-sm gap-x-2">
         <p class="text-gray-500 font-normal dark:text-[#8B8D91]">
@@ -63,21 +63,14 @@ export default {
   data() {
     return {
       post: {
-        user: {
-          full_name: 'Name',
-          username: 'username',
-          image:
-            'https://images.unsplash.com/photo-1646417783534-a769e3e30baf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80',
-        },
         date: '',
-        tweet: 'Your tweet here!',
-        twitter: 'Twitter Web App',
-        likes: 11,
+        twitter_version: 'Twitter Web App',
       },
     };
   },
   computed: {
     ...mapState('theme', ['editMode']),
+    ...mapState('generator', ['name', 'username', 'image', 'tweet', 'likes']),
   },
   mounted() {
     this.getDate();
