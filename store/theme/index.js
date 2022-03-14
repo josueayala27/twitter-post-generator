@@ -13,5 +13,3 @@ export const state = () => ({
     { id: 8, name: 'Sunset', gradient: { from: '#FFCE72', to: '#FF7C31' } },
   ],
 });
-
-export const mutations = import('./mutations.js');

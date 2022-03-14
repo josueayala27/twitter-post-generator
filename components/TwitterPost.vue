@@ -9,17 +9,17 @@
           type="file"
           @change="uploadPhoto" />
         <div>
-          <Avatar :src="image" @edit="$refs['input-photo'].click()" />
+          <Avatar :src="info.image" @edit="$refs['input-photo'].click()" />
         </div>
         <div class="ml-4 leading-5">
           <p
             class="text-gray-700 inline-flex font-bold gap-x-2 group dark:text-white transition-all duration-300">
-            {{ full_name }}
+            {{ info.full_name || 'Name' }}
           </p>
           <div class="text-gray-500 font-normal dark:text-[#8B8D91] flex">
             @
             <div class="outline-none inline-flex transition-all duration-300">
-              {{ username }}
+              {{ info.username || 'username' }}
             </div>
           </div>
         </div>
@@ -31,7 +31,7 @@
     <div class="gap-y-4 flex flex-col">
       <div
         class="text-xl dark:text-white focus:border transition-all duration-300 inline-flex">
-        {{ tweet }}
+        {{ info.tweet }}
       </div>
       <div class="flex text-sm gap-x-2">
         <p class="text-gray-500 font-normal dark:text-[#8B8D91]">
@@ -55,7 +55,7 @@
 
 <script>
 import dayjs from 'dayjs';
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import { cropper } from '@/utils/image';
 
 export default {
@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     ...mapState('theme', ['editMode']),
-    ...mapState('generator', ['name', 'username', 'image', 'tweet', 'likes']),
+    ...mapGetters('generator', ['info']),
   },
   mounted() {
     this.getDate();

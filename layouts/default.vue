@@ -20,16 +20,23 @@ import { toSvg } from '@/utils/downloader';
 
 export default {
   name: 'DefaultLayout',
-  data() {
-    return {
-      username: 'joscode',
-    };
-  },
   computed: {
     ...mapState('theme', ['gradients', 'selectedGradient', 'theme']),
     ...mapGetters('theme', ['background']),
+    ...mapGetters('generator', ['info']),
+
+    /* Setting values for store generator */
+    username: {
+      get() {
+        return this.info.username;
+      },
+      set(value) {
+        this.setStore(['username', value]);
+      },
+    },
   },
   methods: {
+    ...mapMutations('generator', ['setStore']),
     ...mapMutations('theme', ['setGradient', 'setTheme', 'setPreview']),
     async render(element) {
       try {
