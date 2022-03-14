@@ -31,7 +31,7 @@
     <div class="gap-y-4 flex flex-col">
       <div
         class="text-xl dark:text-white focus:border transition-all duration-300 inline-flex">
-        {{ info.tweet }}
+        {{ info.tweet || 'Enter your tweet here!' }}
       </div>
       <div class="flex text-sm gap-x-2">
         <p class="text-gray-500 font-normal dark:text-[#8B8D91]">

@@ -1,5 +1,5 @@
-import { elementToSVG, inlineResources } from 'dom-to-svg';
+import { elementToSVG } from 'dom-to-svg';
 
 export default (_, inject) => {
-  inject('domToSvg', { elementToSVG, inlineResources });
+  inject('domToSvg', { elementToSVG });
 };

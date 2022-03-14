@@ -28,7 +28,6 @@ export default {
   },
   watch: {
     data() {
-      console.log(this.value);
       this.$emit('input', this.data);
     },
   },

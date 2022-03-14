@@ -1,11 +1,11 @@
 <template>
   <div class="flex">
     <aside class="w-[25rem] h-screen p-4 border-r gap-y-2 flex flex-col">
-      <Input label="Name" />
+      <Input v-model="full_name" label="Name" />
       <Input v-model="username" label="Username" />
-      <TextArea label="Tweet" />
+      <TextArea v-model="tweet" label="Tweet" />
       <div class="flex justify-end">
-        <Button>Download</Button>
+        <Button @click="render('twitter-post')">Download</Button>
       </div>
     </aside>
     <main class="flex-1">
@@ -16,7 +16,7 @@
 
 <script>
 import { mapState, mapMutations, mapGetters } from 'vuex';
-import { toSvg } from '@/utils/downloader';
+import { toPng } from '@/utils/downloader';
 
 export default {
   name: 'DefaultLayout',
@@ -26,6 +26,15 @@ export default {
     ...mapGetters('generator', ['info']),
 
     /* Setting values for store generator */
+    full_name: {
+      get() {
+        return this.info.full_name;
+      },
+      set(value) {
+        this.setStore(['fullName', value]);
+      },
+    },
+
     username: {
       get() {
         return this.info.username;
@@ -34,38 +43,23 @@ export default {
         this.setStore(['username', value]);
       },
     },
+
+    tweet: {
+      get() {
+        return this.info.tweet;
+      },
+      set(value) {
+        this.setStore(['tweet', value]);
+      },
+    },
   },
   methods: {
     ...mapMutations('generator', ['setStore']),
     ...mapMutations('theme', ['setGradient', 'setTheme', 'setPreview']),
-    async render(element) {
-      try {
-        const el = document.getElementById(element);
-        const svg = this.$domToSvg.elementToSVG(el);
-        await this.$domToSvg.inlineResources(svg.documentElement);
-        const image = new Image();
-        image.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = el.offsetWidth * 3.5;
-          canvas.height = el.offsetHeight * 3.5;
-          const context = canvas.getContext('2d');
-          context.drawImage(
-            image,
-            0,
-            0,
-            el.offsetWidth * 3.5,
-            el.offsetHeight * 3.5
-          );
-          const url = canvas.toDataURL('image/png');
-          const a = document.createElement('a');
-          a.href = url;
-          a.download = 'Twitter Image.png';
-          a.click();
-        };
-        image.src = toSvg(svg);
-      } catch (error) {
-        console.error('Sucedio un error!');
-      }
+    render(element) {
+      const el = document.getElementById(element);
+      const svg = this.$domToSvg.elementToSVG(el);
+      toPng(el, svg);
     },
   },
 };

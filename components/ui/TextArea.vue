@@ -3,6 +3,7 @@
     <span class="text-sm">{{ label }}</span>
     <textarea
       :id="getId"
+      v-model="data"
       class="w-full outline-none px-4 py-3 focus:bg-orange-50 transition-all bg-gray-100 duration-300 rounded-lg ring-2 ring-transparent focus:ring-orange-500"></textarea>
   </label>
 </template>
@@ -11,11 +12,22 @@
 export default {
   name: 'TextAreaComponent',
   props: {
+    value: { type: String, default: '' },
     label: { type: String, default: '' },
+  },
+  data() {
+    return {
+      data: this.value,
+    };
   },
   computed: {
     getId() {
       return this.label.split(' ').join('-').toLowerCase();
+    },
+  },
+  watch: {
+    data() {
+      this.$emit('input', this.data);
     },
   },
 };
