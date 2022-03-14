@@ -29,7 +29,15 @@ export default {
     data() {
       let data = this.data;
       data = data.replace(/\n/g, '<br>');
-      this.$emit('input', data);
+      data = data.replace(
+        /@([áéíóúa.-zA-Z0-9_]+)/g,
+        '<span class="text-blue-400"> @$1 </span>'
+      );
+      data = data.replace(
+        /#([áéíóúa-zA-Z0-9_]+)/g,
+        '<span class="text-blue-400"> #$1 </span>'
+      );
+      this.$emit('input', '<p>' + data + '</p>');
     },
   },
 };
