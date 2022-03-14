@@ -27,7 +27,9 @@ export default {
   },
   watch: {
     data() {
-      this.$emit('input', this.data);
+      let data = this.data;
+      data = data.replace(/\n/g, '<br>');
+      this.$emit('input', data);
     },
   },
 };
