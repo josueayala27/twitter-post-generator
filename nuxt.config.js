@@ -21,7 +21,11 @@ export default {
   css: ['@/assets/css/main.css', '@/assets/css/tooltip.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ['@/plugins/v-tooltip.client.js', '@/plugins/dom-to-svg.client.js'],
+  plugins: [
+    '@/plugins/v-tooltip.client.js',
+    '@/plugins/dom-to-svg.client.js',
+    '@/plugins/filters.js',
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: [

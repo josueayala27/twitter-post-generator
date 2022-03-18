@@ -4,7 +4,7 @@
     <input
       :id="getId"
       v-model="data"
-      type="text"
+      :type="type"
       class="w-full outline-none px-4 bg-gray-100 py-3 transition-all duration-300 focus:bg-gray-200" />
   </label>
 </template>
@@ -15,8 +15,9 @@ import { mapGetters } from 'vuex';
 export default {
   name: 'InputComponent',
   props: {
-    value: { type: String, default: '' },
+    value: { type: [String, Number], default: '' },
     label: { type: String, default: '' },
+    type: { type: String, default: 'text' },
   },
   data() {
     return {

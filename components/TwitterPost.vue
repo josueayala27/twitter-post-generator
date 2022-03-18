@@ -47,7 +47,7 @@
       class="border-t flex pt-[1rem] dark:border-[#3a3a3a] transition-all duration-300">
       <div class="flex dark:text-[#8B8D91] gap-2 items-center">
         <Icon name="heart" />
-        <span>11</span>
+        <span>{{ info.likes | likeNotation }}</span>
       </div>
     </div>
   </section>

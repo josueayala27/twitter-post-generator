@@ -21,6 +21,7 @@
         <Input v-model="full_name" label="Name" />
         <Input v-model="username" label="Username" />
         <TextArea v-model="tweet" label="Tweet" />
+        <Input v-model="likes" type="number" label="Likes" />
 
         <div class="flex flex-col gap-y-2">
           <span class="text-sm">Theme</span>
@@ -103,6 +104,15 @@ export default {
       },
       set(value) {
         this.setStore(['tweet', value]);
+      },
+    },
+
+    likes: {
+      get() {
+        return this.info.likes;
+      },
+      set(value) {
+        this.setStore(['likes', value]);
       },
     },
   },
