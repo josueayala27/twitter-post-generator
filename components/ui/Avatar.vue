@@ -7,7 +7,11 @@
       @click="$emit('edit')">
       <Icon name="pencil" />
     </div>
-    <img class="w-full h-full object-cover" :src="src" alt="Twitter Photo" />
+    <img
+      v-if="src"
+      class="w-full h-full object-cover"
+      :src="src"
+      alt="Twitter Photo" />
   </div>
 </template>
 

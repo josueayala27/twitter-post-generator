@@ -1,19 +1,27 @@
 <template>
   <div class="flex container mx-auto">
-    <aside class="w-[25rem] h-screen p-4">
-      <div class="gap-y-4 flex flex-col shadow-lg p-6">
+    <aside class="h-screen p-4 grid place-items-center">
+      <div class="gap-y-4 flex flex-col shadow-lg p-6 w-[25rem]">
         <!-- Header section -->
+        <input
+          ref="profile-image"
+          type="file"
+          class="hidden"
+          @change="uploadImage" />
         <div class="flex justify-center">
           <div
-            class="rounded-full overflow-hidden group h-[7rem] cursor-pointer aspect-square relative bg-gray-200">
+            class="rounded-full overflow-hidden grid place-items-center group h-[7rem] cursor-pointer aspect-square relative bg-gray-200">
             <div
-              class="w-full z-[1] cursor-pointer absolute h-full group-hover:bg-black/50 group-hover:opacity-100 opacity-0 text-white flex items-center justify-center inset-0">
+              class="w-full z-[1] cursor-pointer absolute h-full group-hover:bg-black/50 group-hover:opacity-100 opacity-0 text-white flex items-center justify-center inset-0"
+              @click="$refs['profile-image'].click()">
               <Icon name="pencil" />
             </div>
             <img
+              v-if="info.image"
               class="w-full h-full object-cover"
-              src="https://images.unsplash.com/photo-1647456494292-65fb36fa8633?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              :src="info.image"
               alt="Twitter Image" />
+            <Icon v-else name="upload" class="group-hover:hidden" />
           </div>
         </div>
 
@@ -53,7 +61,7 @@
         </div>
 
         <div class="flex flex-col gap-y-2">
-          <span class="text-sm">Background</span>
+          <!-- <span class="text-sm">Background</span> -->
         </div>
 
         <!-- Footer section -->
@@ -71,6 +79,7 @@
 <script>
 import { mapState, mapMutations, mapGetters } from 'vuex';
 import { toPng } from '@/utils/downloader';
+import { cropper } from '@/utils/image';
 
 export default {
   name: 'DefaultLayout',
@@ -123,6 +132,23 @@ export default {
       const el = document.getElementById(element);
       const svg = this.$domToSvg.elementToSVG(el);
       toPng(el, svg);
+    },
+
+    /**
+     * Upload image
+     */
+    uploadImage(e) {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = async ({ target }) => {
+        const src = await cropper(
+          document.getElementById('content'),
+          target.result,
+          144
+        );
+        this.setStore(['image', src]);
+      };
     },
   },
 };
