@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-v-html -->
 <template>
   <section
-    class="p-5 select-none max-w-[450px] bg-white shadow-xl rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
+    class="p-5 select-none max-w-[450px] dark:bg-[#000000] bg-white shadow-xl rounded-2xl transition-all duration-300 w-full gap-y-4 flex flex-col">
     <div class="header flex justify-between">
       <div class="flex items-center">
         <input

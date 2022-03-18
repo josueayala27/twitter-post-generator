@@ -3,7 +3,7 @@
     <div
       id="twitter-post"
       :class="[theme]"
-      :style="`background-image: linear-gradient(120deg, ${background.from} , ${background.to});`"
+      :style="`background-image: linear-gradient(130deg, ${background.from} , ${background.to});`"
       class="transition-all duration-300 flex items-center justify-center p-[64px]">
       <TwitterPost />
     </div>

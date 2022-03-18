@@ -20,6 +20,7 @@
                 <ItemDropdown
                   v-for="({ id, gradient, name }, index) in gradients"
                   :key="id"
+                  :selected="index === selectedGradient"
                   @click="setGradient(index)">
                   <span
                     class="h-[1rem] aspect-square rounded-full"
