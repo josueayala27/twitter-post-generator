@@ -1,12 +1,12 @@
 # Twitter Post generator
 
-  <a href="/LICENSE">
-    <img src="https://img.shields.io/github/license/josuemartinezz/twitter-post-generator" alt="MIT License" />
-  </a>
+<a href="/LICENSE">
+  <img src="https://img.shields.io/github/license/josuemartinezz/twitter-post-generator" alt="MIT License" />
+</a>
 
 ## Introduction
 
----
+--
 
 ## Features
 
