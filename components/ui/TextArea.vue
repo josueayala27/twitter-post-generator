@@ -4,7 +4,8 @@
     <textarea
       :id="getId"
       v-model="data"
-      class="w-full outline-none px-4 bg-gray-100 py-3 transition-all duration-300 focus:bg-gray-200" />
+      rows="4"
+      class="w-full outline-none px-4 bg-gray-100 py-3 transition-all duration-300 focus:bg-gray-200 resize-none" />
   </label>
 </template>
 
@@ -31,11 +32,11 @@ export default {
       data = data.replace(/\n/g, '<br>');
       data = data.replace(
         /@([áéíóúa.-zA-Z0-9_]+)/g,
-        '<span class="text-blue-400"> @$1 </span>'
+        '<span class="active-text"> @$1 </span>'
       );
       data = data.replace(
         /#([áéíóúa-zA-Z0-9_]+)/g,
-        '<span class="text-blue-400"> #$1 </span>'
+        '<span class="active-text"> #$1 </span>'
       );
       this.$emit('input', '<p>' + data + '</p>');
     },

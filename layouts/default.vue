@@ -1,7 +1,23 @@
 <template>
-  <div class="flex bg-gradient-to-r">
+  <div class="flex container mx-auto">
     <aside class="w-[25rem] h-screen p-4">
       <div class="gap-y-4 flex flex-col shadow-lg p-6">
+        <!-- Header section -->
+        <div class="flex justify-center">
+          <div
+            class="rounded-full overflow-hidden group h-[7rem] cursor-pointer aspect-square relative bg-gray-200">
+            <div
+              class="w-full z-[1] cursor-pointer absolute h-full group-hover:bg-black/50 group-hover:opacity-100 opacity-0 text-white flex items-center justify-center inset-0">
+              <Icon name="pencil" />
+            </div>
+            <img
+              class="w-full h-full object-cover"
+              src="https://images.unsplash.com/photo-1647456494292-65fb36fa8633?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="Twitter Image" />
+          </div>
+        </div>
+
+        <!-- Body section -->
         <Input v-model="full_name" label="Name" />
         <Input v-model="username" label="Username" />
         <TextArea v-model="tweet" label="Tweet" />
@@ -35,6 +51,11 @@
           </div>
         </div>
 
+        <div class="flex flex-col gap-y-2">
+          <span class="text-sm">Background</span>
+        </div>
+
+        <!-- Footer section -->
         <div class="flex justify-end">
           <Button @click="render('twitter-post')">Download</Button>
         </div>
