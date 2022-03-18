@@ -1,7 +1,7 @@
 export const state = () => ({
   theme: 'light' /* light or dark ☀️/🌚 */,
 
-  selectedGradient: 1 /* According to *colors* position */,
+  selectedGradient: 2 /* According to *gradients* position */,
   gradients: [
     { id: 1, name: 'Breeze', gradient: { from: '#CD2F9A', to: '#6C3CEA' } },
     { id: 2, name: 'Candy', gradient: { from: '#A68FFB', to: '#E8BFF8' } },

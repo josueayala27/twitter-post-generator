@@ -5,11 +5,13 @@
       :id="getId"
       v-model="data"
       type="text"
-      class="w-full outline-none px-4 py-3 focus:bg-orange-50 transition-all bg-gray-100 duration-300 rounded-lg ring-2 ring-transparent focus:ring-orange-500" />
+      class="w-full outline-none px-4 bg-gray-100 py-3 transition-all duration-300 focus:bg-gray-200" />
   </label>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'InputComponent',
   props: {
@@ -22,6 +24,7 @@ export default {
     };
   },
   computed: {
+    ...mapGetters('theme', ['background']),
     getId() {
       return this.label.split(' ').join('-').toLowerCase();
     },

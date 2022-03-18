@@ -27,7 +27,7 @@
 }
 
 .tooltip[x-placement^="bottom"] {
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .tooltip[x-placement^="bottom"] .tooltip-arrow {
@@ -72,7 +72,7 @@
 }
 
 .tooltip.popover .popover-inner {
-  @apply text-black bg-white p-3 rounded-lg shadow-lg;
+  @apply text-black bg-white p-2 rounded-lg shadow-lg;
 }
 
 .tooltip.popover .popover-arrow {
