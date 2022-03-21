@@ -11,7 +11,74 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Create beatiful twitter images',
+        content:
+          "Updated for Twitter's latest look, with Tweetgen you can make and share believable fake Tweets. You can even generate images of reply chains, users blocking you, getting suspended, and more.",
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content:
+          'Twitter Post Generator | Create Beautiful Images of Twitter Posts',
+      },
+      {
+        hid: 'og:description',
+        name: 'og:description',
+        content:
+          "Updated for Twitter's latest look, with Tweetgen you can make and share believable fake Tweets. You can even generate images of reply chains, users blocking you, getting suspended, and more.",
+      },
+      {
+        hid: 'twitter:title',
+        name: 'twitter:title',
+        content:
+          'Twitter Post Generator | Create Beautiful Images of Twitter Posts',
+      },
+      {
+        hid: 'twitter:description',
+        name: 'twitter:description',
+        content: 'Capture and share Twitter posts as beautiful images.',
+      },
+      {
+        hid: 'twitter:card',
+        name: 'twitter:card',
+        content: 'summary_large_image',
+      },
+      {
+        hid: 'twitter:site',
+        name: 'twitter:site',
+        content: '@joscode',
+      },
+      {
+        hid: 'twitter:image',
+        name: 'twitter:image',
+        content:
+          'https://twitter-post-generator.vercel.app/cover/twitter-post-generator.png',
+      },
+      {
+        hid: 'twitter:url',
+        name: 'twitter:url',
+        content: 'https://twitter.com/joscode',
+      },
+      {
+        hid: 'og:type',
+        name: 'og:type',
+        content: 'website',
+      },
+      {
+        hid: 'og:url',
+        name: 'og:url',
+        content: 'https://twitter-post-generator.vercel.app/',
+      },
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content:
+          'https://twitter-post-generator.vercel.app/cover/twitter-post-generator.png',
+      },
+      {
+        hid: 'keywords',
+        name: 'keywords',
+        content:
+          'screenshot, capture, share, create, convert, twitter, post, tweet, image, picture, photo, export',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
@@ -64,7 +131,18 @@ export default {
   },
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
+    [
+      '@nuxtjs/robots',
+      {
+        UserAgent: '*',
+        Allow: '/',
+        Sitemap: 'https://twitter-post-generator.vercel.app/sitemap.xml',
+      },
+    ],
+  ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
