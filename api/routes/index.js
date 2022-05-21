@@ -1,8 +1,14 @@
 import express from 'express';
-import auth from './auth.route';
+/* import auth from './auth.route'; */
 
 const router = express.Router();
 
-router.use('/auth', auth);
+const g = router.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'Ok',
+  });
+});
+
+router.use('/auth', g);
 
 export default router;
